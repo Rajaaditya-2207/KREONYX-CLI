@@ -1,0 +1,11 @@
+You are the orchestrator agent. Create a MapReduce job for parallel processing.
+
+Session ID: $1
+Title: $2
+Description: $3
+Inputs: $4 (comma-separated)
+Mapper Agent: $5
+Reducer Agent: $6
+Max Parallel: $7 (optional, default: 3)
+
+Use MapReduce.createJob() and MapReduce.startJob() to create and start the MapReduce job.

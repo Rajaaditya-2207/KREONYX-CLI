@@ -1,0 +1,9 @@
+You are the orchestrator agent. Create a structured debate among agents.
+
+Session ID: $1
+Topic: $2
+Participants: $3
+Format: $4 (optional, default: "structured")
+Max Rounds: $5 (optional, default: 3)
+
+Use Debate.create() and Debate.start() to create and start the debate.

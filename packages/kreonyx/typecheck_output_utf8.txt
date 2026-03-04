@@ -1,0 +1,156 @@
+﻿bun : $ tsgo --noEmit
+At line:1 char:1
++ bun run typecheck > typecheck_output.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ($ tsgo --n 
+   oEmit:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+src/acp/agent.ts(43,40): error TS2724: '"@OPENCODE-ai/sdk/v2"' has no exported member named 'OPENCODEClient'. Did you mean 'OpencodeClient'?
+src/acp/agent.ts(62,14): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(63,15): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/acp/agent.ts(68,38): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/acp/agent.ts(81,14): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(82,15): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/acp/agent.ts(90,8): error TS7006: Parameter 'm' implicitly has an 'any' type.
+src/acp/agent.ts(105,49): error TS7006: Parameter 'sum' implicitly has an 'any' type.
+src/acp/agent.ts(105,54): error TS7006: Parameter 'm' implicitly has an 'any' type.
+src/acp/agent.ts(280,20): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(281,21): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/acp/agent.ts(456,20): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(457,21): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/acp/agent.ts(464,44): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/acp/agent.ts(617,18): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(618,19): error TS7006: Parameter 'err' implicitly has an 'any' type.
+src/acp/agent.ts(623,46): error TS7006: Parameter 'm' implicitly has an 'any' type.
+src/acp/agent.ts(668,18): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(670,43): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/acp/agent.ts(670,46): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/acp/agent.ts(671,50): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/acp/agent.ts(674,50): error TS7006: Parameter 'session' implicitly has an 'any' type.
+src/acp/agent.ts(715,18): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(740,18): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(741,19): error TS7006: Parameter 'err' implicitly has an 'any' type.
+src/acp/agent.ts(1109,78): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(1111,60): error TS2345: Argument of type '{ name: string; }[]' is not assignable to parameter of type '{ id: string; models: Record<string, { variants?: Record<string, any> | undefined; }>; }[]'.
+  Type '{ name: string; }' is missing the following properties from type '{ id: string; models: Record<string, { variants?: Record<string, any> | undefined; }>; }': id, models
+src/acp/agent.ts(1116,52): error TS2345: Argument of type '{ name: string; }[]' is not assignable to parameter of type '{ id: string; name: string; models: Record<string, any>; }[]'.
+  Type '{ name: string; }' is missing the following properties from type '{ id: string; name: string; models: Record<string, any>; }': id, models
+src/acp/agent.ts(1180,21): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/acp/agent.ts(1215,16): error TS7006: Parameter 'x' implicitly has an 'any' type.
+src/acp/agent.ts(1222,60): error TS2345: Argument of type '{ name: string; }[]' is not assignable to parameter of type '{ id: string; models: Record<string, { variants?: Record<string, any> | undefined; }>; }[]'.
+  Type '{ name: string; }' is missing the following properties from type '{ id: string; models: Record<string, { variants?: Record<string, any> | undefined; }>; }': id, models
+src/agent/__tests__/orchestrator.test.ts(1,54): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/collaboration/__tests__/debate.test.ts(1,54): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/collaboration/__tests__/integration.test.ts(1,54): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/collaboration/__tests__/integration.test.ts(22,20): error TS7006: Parameter 'type' implicitly has an 'any' type.
+src/collaboration/__tests__/integration.test.ts(22,26): error TS7006: Parameter 'properties' implicitly has an 'any' type.
+src/collaboration/__tests__/integration.test.ts(42,47): error TS7006: Parameter '_key' implicitly has an 'any' type.
+src/collaboration/__tests__/integration.test.ts(42,53): error TS7006: Parameter 'updater' implicitly has an 'any' type.
+src/collaboration/__tests__/integration.test.ts(55,22): error TS7006: Parameter 'type' implicitly has an 'any' type.
+src/collaboration/__tests__/integration.test.ts(55,28): error TS7006: Parameter 'from' implicitly has an 'any' type.
+src/collaboration/__tests__/integration.test.ts(55,34): error TS7006: Parameter 'collaborationId' implicitly has an 'any' type.
+src/collaboration/__tests__/integration.test.ts(55,51): error TS7006: Parameter 'content' implicitly has an 'any' type.
+src/collaboration/__tests__/integration.test.ts(61,27): error TS2339: Property 'priority' does not exist on type '{}'.
+src/collaboration/__tests__/integration.test.ts(62,35): error TS2339: Property 'requiresResponse' does not exist on type '{}'.
+src/collaboration/__tests__/integration.test.ts(63,28): error TS2339: Property 'inReplyTo' does not exist on type '{}'.
+src/collaboration/__tests__/integration.test.ts(66,47): error TS7006: Parameter 'message' implicitly has an 'any' type.
+src/collaboration/__tests__/mapreduce.test.ts(1,54): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/collaboration/__tests__/message.test.ts(1,54): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/collaboration/__tests__/review.test.ts(1,54): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/collaboration/__tests__/vote.test.ts(1,54): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/collaboration/debate.ts(227,11): error TS2322: Type '"con" | "counter" | "neutral" | "pro"' is not assignable to type '"against" | "for" | "neutral"'.
+  Type '"con"' is not assignable to type '"against" | "for" | "neutral"'.
+src/collaboration/debate.ts(470,42): error TS2345: Argument of type '(event: { debateId: string; }) => void' is not assignable to parameter of type '(event: { type: "debate.started"; properties: { debateId: string; round: number; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'debateId' is missing in type '{ type: "debate.started"; properties: { debateId: string; round: number; }; }' but required in type '{ debateId: string; }'.
+src/collaboration/debate.ts(476,40): error TS2345: Argument of type '(event: { debateId: string; }) => void' is not assignable to parameter of type '(event: { type: "debate.turn_started"; properties: { debateId: string; speaker: string; round: number; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'debateId' is missing in type '{ type: "debate.turn_started"; properties: { debateId: string; speaker: string; round: number; }; }' but required in type '{ debateId: string; }'.
+src/collaboration/debate.ts(482,46): error TS2345: Argument of type '(arg: { id: string; debateId: string; round: number; speaker: string; position: "con" | "counter" | "neutral" | "pro"; content: string; evidence?: string[] | undefined; timestamp: number; respondingTo?: string | undefined; }) => void' is not assignable to parameter of type '(event: { type: "debate.argument_submitted"; properties: { id: string; debateId: string; round: number; speaker: string; position: "con" | "counter" | "neutral" | "pro"; content: string; evidence?: string[] | undefined; timestamp: number; respondingTo?: string | undefined; }; }) => void'.
+  Types of parameters 'arg' and 'event' are incompatible.
+    Type '{ type: "debate.argument_submitted"; properties: { id: string; debateId: string; round: number; speaker: string; position: "con" | "counter" | "neutral" | "pro"; content: string; evidence?: string[] | undefined; timestamp: number; respondingTo?: string | undefined; }; }' is missing the following properties from type '{ id: string; debateId: string; round: number; speaker: string; position: "con" | "counter" | "neutral" | "pro"; content: string; evidence?: string[] | undefined; timestamp: number; respondingTo?: string | undefined; }': id, debateId, round, speaker, and 3 more.
+src/collaboration/debate.ts(488,43): error TS2345: Argument of type '(event: { debateId: string; }) => void' is not assignable to parameter of type '(event: { type: "debate.round_completed"; properties: { debateId: string; round: number; nextRound: number; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'debateId' is missing in type '{ type: "debate.round_completed"; properties: { debateId: string; round: number; nextRound: number; }; }' but required in type '{ debateId: string; }'.
+src/collaboration/debate.ts(494,44): error TS2345: Argument of type '(event: { debateId: string; }) => void' is not assignable to parameter of type '(event: { type: "debate.concluded"; properties: { debateId: string; resolution: string; winningPosition: string; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'debateId' is missing in type '{ type: "debate.concluded"; properties: { debateId: string; resolution: string; winningPosition: string; }; }' but required in type '{ debateId: string; }'.
+src/collaboration/mapreduce.ts(491,41): error TS2345: Argument of type '(event: { jobId: string; }) => void' is not assignable to parameter of type '(event: { type: "mapreduce.task_assigned"; properties: { jobId: string; taskId: string; agent: string; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'jobId' is missing in type '{ type: "mapreduce.task_assigned"; properties: { jobId: string; taskId: string; agent: string; }; }' but required in type '{ jobId: string; }'.
+src/collaboration/mapreduce.ts(497,42): error TS2345: Argument of type '(event: { jobId: string; }) => void' is not assignable to parameter of type '(event: { type: "mapreduce.task_completed"; properties: { jobId: string; taskId: string; result: any; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'jobId' is missing in type '{ type: "mapreduce.task_completed"; properties: { jobId: string; taskId: string; result: any; }; }' but required in type '{ jobId: string; }'.
+src/collaboration/mapreduce.ts(503,39): error TS2345: Argument of type '(event: { jobId: string; }) => void' is not assignable to parameter of type '(event: { type: "mapreduce.task_failed"; properties: { jobId: string; taskId: string; error: string; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'jobId' is missing in type '{ type: "mapreduce.task_failed"; properties: { jobId: string; taskId: string; error: string; }; }' but required in type '{ jobId: string; }'.
+src/collaboration/mapreduce.ts(509,41): error TS2345: Argument of type '(event: { jobId: string; }) => void' is not assignable to parameter of type '(event: { type: "mapreduce.job_completed"; properties: { jobId: string; result: any; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'jobId' is missing in type '{ type: "mapreduce.job_completed"; properties: { jobId: string; result: any; }; }' but required in type '{ jobId: string; }'.
+src/collaboration/message.ts(208,9): error TS2322: Type 'Timeout' is not assignable to type 'number'.
+src/collaboration/message.ts(303,63): error TS2345: Argument of type '(message: { id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...; }) => void' is not assignable to parameter of type '(event: { type: "agent.message.received"; properties: { id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...'.
+  Types of parameters 'message' and 'event' are incompatible.
+    Type '{ type: "agent.message.received"; properties: { id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...; }; }' is not assignable to type '{ id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...; }'.
+      Type '{ type: "agent.message.received"; properties: { id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...; }; }' is missing the following properties from type '{ id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "ERROR"; content: { ...; }; }': id, from, collaborationId, timestamp, and 3 more.
+src/collaboration/message.ts(316,63): error TS2345: Argument of type '(message: { id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...; }) => void' is not assignable to parameter of type '(event: { type: "agent.message.received"; properties: { id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...'.
+  Types of parameters 'message' and 'event' are incompatible.
+    Type '{ type: "agent.message.received"; properties: { id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...; }; }' is not assignable to type '{ id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...; }'.
+      Type '{ type: "agent.message.received"; properties: { id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "PROPOSE"; content: { ...; }; } | ... 9 more ... | { ...; }; }' is missing the following properties from type '{ id: string; from: string; to?: string | undefined; collaborationId: string; timestamp: number; priority: "high" | "low" | "normal" | "urgent"; requiresResponse: boolean; inReplyTo?: string | undefined; type: "ERROR"; content: { ...; }; }': id, from, collaborationId, timestamp, and 3 more.
+src/collaboration/review.ts(65,123): error TS2339: Property 'element' does not exist on type 'ZodDefault<ZodArray<ZodObject<{ id: ZodString; line: ZodOptional<ZodNumber>; file: ZodOptional<ZodString>; message: ZodString; severity: ZodDefault<...>; resolved: ZodDefault<...>; replies: ZodDefault<...>; }, $strip>>>'.
+src/collaboration/review.ts(405,13): error TS2322: Type '{ type: "code" | "documentation" | "file" | "general" | "test"; path?: string | undefined; content?: string | undefined; description?: string | undefined; }[]' is not assignable to type '{ type: "code" | "documentation" | "file" | "test"; path?: string | undefined; content?: string | undefined; }[]'.
+  Type '{ type: "code" | "documentation" | "file" | "general" | "test"; path?: string | undefined; content?: string | undefined; description?: string | undefined; }' is not assignable to type '{ type: "code" | "documentation" | "file" | "test"; path?: string | undefined; content?: string | undefined; }'.
+    Types of property 'type' are incompatible.
+      Type '"code" | "documentation" | "file" | "general" | "test"' is not assignable to type '"code" | "documentation" | "file" | "test"'.
+        Type '"general"' is not assignable to type '"code" | "documentation" | "file" | "test"'.
+src/collaboration/review.ts(519,44): error TS2345: Argument of type '(review: { id: string; requestId: string; reviewer: string; status: "in_progress" | "pending" | "submitted"; verdict?: "approve" | "comment" | "reject" | "request_changes" | undefined; comments: { ...; }[]; summary?: string | undefined; submittedAt?: number | undefined; }) => void' is not assignable to parameter of type '(event: { type: "review.submitted"; properties: { id: string; requestId: string; reviewer: string; status: "in_progress" | "pending" | "submitted"; verdict?: "approve" | "comment" | "reject" | "request_changes" | undefined; comments: { ...; }[]; summary?: string | undefined; submittedAt?: number | undefined; }; }) =...'.
+  Types of parameters 'review' and 'event' are incompatible.
+    Type '{ type: "review.submitted"; properties: { id: string; requestId: string; reviewer: string; status: "in_progress" | "pending" | "submitted"; verdict?: "approve" | "comment" | "reject" | "request_changes" | undefined; comments: { ...; }[]; summary?: string | undefined; submittedAt?: number | undefined; }; }' is missing the following properties from type '{ id: string; requestId: string; reviewer: string; status: "in_progress" | "pending" | "submitted"; verdict?: "approve" | "comment" | "reject" | "request_changes" | undefined; comments: { ...; }[]; summary?: string | undefined; submittedAt?: number | undefined; }': id, requestId, reviewer, status, comments
+src/collaboration/review.ts(527,43): error TS2345: Argument of type '(event: { requestId: string; }) => void' is not assignable to parameter of type '(event: { type: "review.approved"; properties: { requestId: string; reviewers: string[]; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'requestId' is missing in type '{ type: "review.approved"; properties: { requestId: string; reviewers: string[]; }; }' but required in type '{ requestId: string; }'.
+src/collaboration/review.ts(535,45): error TS2345: Argument of type '(event: { requestId: string; }) => void' is not assignable to parameter of type '(event: { type: "review.changes_requested"; properties: { requestId: string; reviews: { id: string; requestId: string; reviewer: string; status: "in_progress" | "pending" | "submitted"; verdict?: "approve" | ... 3 more ... | undefined; comments: { ...; }[]; summary?: string | undefined; submittedAt?: number | undefi...'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'requestId' is missing in type '{ type: "review.changes_requested"; properties: { requestId: string; reviews: { id: string; requestId: string; reviewer: string; status: "in_progress" | "pending" | "submitted"; verdict?: "approve" | ... 4 more ... | undefined; comments: { ...; }[]; summary?: string | undefined; submittedAt?: number | undefined; }[]...' but required in type '{ requestId: string; }'.
+src/collaboration/review.ts(543,43): error TS2345: Argument of type '(event: { requestId: string; }) => void' is not assignable to parameter of type '(event: { type: "review.rejected"; properties: { requestId: string; reviewer: string; reason: string; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'requestId' is missing in type '{ type: "review.rejected"; properties: { requestId: string; reviewer: string; reason: string; }; }' but required in type '{ requestId: string; }'.
+src/collaboration/vote.ts(379,37): error TS2345: Argument of type '(vote: { id: string; proposalId: string; voter: string; choice: string | string[]; weight: number; reasoning?: string | undefined; timestamp: number; }) => void' is not assignable to parameter of type '(event: { type: "voting.vote_cast"; properties: { id: string; proposalId: string; voter: string; choice: string | string[]; weight: number; reasoning?: string | undefined; timestamp: number; }; }) => void'.
+  Types of parameters 'vote' and 'event' are incompatible.
+    Type '{ type: "voting.vote_cast"; properties: { id: string; proposalId: string; voter: string; choice: string | string[]; weight: number; reasoning?: string | undefined; timestamp: number; }; }' is missing the following properties from type '{ id: string; proposalId: string; voter: string; choice: string | string[]; weight: number; reasoning?: string | undefined; timestamp: number; }': id, proposalId, voter, choice, and 2 more.
+src/collaboration/vote.ts(387,43): error TS2345: Argument of type '(event: { proposalId: string; }) => void' is not assignable to parameter of type '(event: { type: "voting.proposal_closed"; properties: { proposalId: string; result: { winningOption?: string | undefined; votes: Record<string, number>; totalVotes: number; consensusReached: boolean; }; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'proposalId' is missing in type '{ type: "voting.proposal_closed"; properties: { proposalId: string; result: { winningOption?: string | undefined; votes: Record<string, number>; totalVotes: number; consensusReached: boolean; }; }; }' but required in type '{ proposalId: string; }'.
+src/collaboration/vote.ts(395,45): error TS2345: Argument of type '(event: { proposalId: string; }) => void' is not assignable to parameter of type '(event: { type: "voting.consensus_reached"; properties: { proposalId: string; winningOption: string; agreement: number; }; }) => void'.
+  Types of parameters 'event' and 'event' are incompatible.
+    Property 'proposalId' is missing in type '{ type: "voting.consensus_reached"; properties: { proposalId: string; winningOption: string; agreement: number; }; }' but required in type '{ proposalId: string; }'.
+src/plugin/codex.ts(1,41): error TS2307: Cannot find module '@KREONYX CLI-ai/plugin' or its corresponding type declarations.
+src/plugin/codex.ts(355,20): error TS7006: Parameter 'getAuth' implicitly has an 'any' type.
+src/plugin/codex.ts(355,29): error TS7006: Parameter 'provider' implicitly has an 'any' type.
+src/plugin/codex.ts(408,11): error TS18046: 'model' is of type 'unknown'.
+src/plugin/codex.ts(617,28): error TS7006: Parameter 'input' implicitly has an 'any' type.
+src/plugin/codex.ts(617,35): error TS7006: Parameter 'output' implicitly has an 'any' type.
+src/tool/orchestrate.ts(18,11): error TS2322: Type '(input: { mode: "debate" | "map-reduce"; title: string; description: string; files?: string[] | undefined; requirements?: string[] | undefined; }, ctx: Context<Metadata>) => Promise<...>' is not assignable to type '(args: { mode: "debate" | "map-reduce"; title: string; description: string; files?: string[] | undefined; requirements?: string[] | undefined; }, ctx: Context<Metadata>) => Promise<...>'.
+  Type 'Promise<{ title: string; output: string; metadata: { error: boolean; jobId?: undefined; fileCount?: undefined; sessionId?: undefined; debateId?: undefined; mode?: undefined; }; } | { title: string; output: string; metadata: { ...; }; } | { ...; }>' is not assignable to type 'Promise<{ title: string; metadata: { error: boolean; jobId?: undefined; fileCount?: undefined; sessionId?: undefined; debateId?: undefined; mode?: undefined; }; output: string; attachments?: { id: string; sessionID: string; ... 5 more ...; source?: { ...; } | ... 2 more ... | undefined; }[] | undefined; }>'.
+    Type '{ title: string; output: string; metadata: { error: boolean; jobId?: undefined; fileCount?: undefined; sessionId?: undefined; debateId?: undefined; mode?: undefined; }; } | { title: string; output: string; metadata: { ...; }; } | { ...; }' is not assignable to type '{ title: string; metadata: { error: boolean; jobId?: undefined; fileCount?: undefined; sessionId?: undefined; debateId?: undefined; mode?: undefined; }; output: string; attachments?: { id: string; sessionID: string; ... 5 more ...; source?: { ...; } | ... 2 more ... | undefined; }[] | undefined; }'.
+      Type '{ title: string; output: string; metadata: { error?: undefined; sessionId: string; jobId: string; mode: string; fileCount: number; debateId?: undefined; }; }' is not assignable to type '{ title: string; metadata: { error: boolean; jobId?: undefined; fileCount?: undefined; sessionId?: undefined; debateId?: undefined; mode?: undefined; }; output: string; attachments?: { id: string; sessionID: string; ... 5 more ...; source?: { ...; } | ... 2 more ... | undefined; }[] | undefined; }'.
+        The types of 'metadata.error' are incompatible between these types.
+          Type 'undefined' is not assignable to type 'boolean'.
+src/tool/orchestrate.ts(20,13): error TS2353: Object literal may only specify known properties, and 'description' does not exist in type 'Omit<{ id: string; sessionID: string; permission: string; patterns: string[]; metadata: Record<string, any>; always: string[]; tool?: { messageID: string; callID: string; } | undefined; }, "id" | ... 1 more ... | "tool">'.
+src/tool/request_review.ts(16,13): error TS2353: Object literal may only specify known properties, and 'description' does not exist in type 'Omit<{ id: string; sessionID: string; permission: string; patterns: string[]; metadata: Record<string, any>; always: string[]; tool?: { messageID: string; callID: string; } | undefined; }, "id" | ... 1 more ... | "tool">'.
+src/workspace/__tests__/memory.test.ts(1,54): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/workspace/__tests__/memory.test.ts(26,96): error TS2554: Expected 3 arguments, but got 4.
+src/workspace/__tests__/memory.test.ts(43,40): error TS2339: Property 'getEntry' does not exist on type 'typeof SharedMemory'.
+src/workspace/__tests__/memory.test.ts(55,40): error TS2339: Property 'getEntry' does not exist on type 'typeof SharedMemory'.
+src/workspace/__tests__/memory.test.ts(69,26): error TS2551: Property 'delete' does not exist on type 'typeof SharedMemory'. Did you mean 'delete_'?
+src/workspace/__tests__/memory.test.ts(81,41): error TS2339: Property 'exists' does not exist on type 'typeof SharedMemory'.
+src/workspace/__tests__/memory.test.ts(86,41): error TS2339: Property 'exists' does not exist on type 'typeof SharedMemory'.
+src/workspace/__tests__/memory.test.ts(108,40): error TS2339: Property 'subscribeToUpdates' does not exist on type 'typeof SharedMemory'.
+src/workspace/__tests__/memory.test.ts(133,40): error TS2339: Property 'getStats' does not exist on type 'typeof SharedMemory'.
+src/workspace/__tests__/memory.test.ts(146,41): error TS2339: Property 'getEntry' does not exist on type 'typeof SharedMemory'.
+src/workspace/__tests__/memory.test.ts(151,41): error TS2339: Property 'getEntry' does not exist on type 'typeof SharedMemory'.
+src/workspace/__tests__/memory.test.ts(162,94): error TS2554: Expected 3 arguments, but got 4.
+src/workspace/filesystem.ts(312,25): error TS2393: Duplicate function implementation.
+src/workspace/filesystem.ts(331,25): error TS2393: Duplicate function implementation.
+src/workspace/filesystem.ts(378,25): error TS2393: Duplicate function implementation.
+src/workspace/filesystem.ts(406,25): error TS2393: Duplicate function implementation.

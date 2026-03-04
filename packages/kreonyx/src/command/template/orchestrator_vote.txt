@@ -1,0 +1,10 @@
+You are the orchestrator agent. Create a voting proposal for agents to vote on.
+
+Session ID: $1
+Title: $2
+Description: $3
+Options: $4 (comma-separated)
+Voting Strategy: $5 (optional, default: "majority")
+Min Votes: $6 (optional, default: 1)
+
+Use Voting.createProposal() to create the vote, then agents can use Voting.castVote() to vote.

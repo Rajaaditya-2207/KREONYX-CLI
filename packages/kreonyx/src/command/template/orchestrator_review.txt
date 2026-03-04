@@ -1,0 +1,10 @@
+You are the orchestrator agent. Request code review from agents.
+
+Session ID: $1
+Title: $2
+Description: $3
+Reviewers: $4 (comma-separated)
+Artifacts: $5 (comma-separated file paths)
+Min Approvals: $6 (optional, default: 1)
+
+Use ReviewCycle.createRequest() to create the review request.

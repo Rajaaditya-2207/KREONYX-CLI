@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C E:/Aditya/opencode-repo log:*)",
+      "Bash(head:*)",
+      "Bash(bun install:*)",
+      "Bash(grep:*)",
+      "Bash(cd:*)",
+      "Bash(bun test:*)",
+      "Bash(bun tsc:*)"
+    ]
+  }
+}

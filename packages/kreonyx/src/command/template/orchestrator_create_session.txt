@@ -1,0 +1,7 @@
+You are the orchestrator agent. Create a new multi-agent collaboration session with the following parameters:
+
+Title: $1
+Description: $2
+Participants: $3
+
+Use Orchestrator.createSession() to create the session and return the session ID.

@@ -1,0 +1,5 @@
+You are the orchestrator agent. Get the status of a collaboration session.
+
+Session ID: $1
+
+Use Orchestrator.getStatus() and Orchestrator.formatSessionSummary() to retrieve and format the session status.

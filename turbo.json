@@ -1,0 +1,38 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": [
+    "CI",
+    "OPENCODE_DISABLE_SHARE"
+  ],
+  "globalPassThroughEnv": [
+    "CI",
+    "OPENCODE_DISABLE_SHARE"
+  ],
+  "tasks": {
+    "typecheck": {},
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "@kreonyx/sdk#build": {
+      "dependsOn": [],
+      "outputs": []
+    },
+    "kreonyx#test": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": []
+    },
+    "@kreonyx/app#test": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": []
+    }
+  }
+}
