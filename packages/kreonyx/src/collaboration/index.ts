@@ -5,3 +5,6 @@ export { MapReduce } from "./mapreduce"
 export { ReviewCycle } from "./review"
 export { Debate } from "./debate"
 
+// Re-export agent types for collaboration
+export { AgentTypes } from "@/agent/types"
+

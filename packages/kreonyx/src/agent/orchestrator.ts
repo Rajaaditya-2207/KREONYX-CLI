@@ -7,6 +7,7 @@ import { ReviewCycle } from "@/collaboration/review"
 import { Debate } from "@/collaboration/debate"
 import { SharedMemory } from "@/workspace/memory"
 import { SharedFilesystem } from "@/workspace/filesystem"
+import { AgentTypes } from "./types"
 import { ulid } from "ulid"
 
 export namespace Orchestrator {
@@ -32,6 +33,31 @@ export namespace Orchestrator {
   const sessions = new Map<string, CollaborationSession>()
   const PERSISTENCE_KEY = "orchestrator:sessions"
   let persistenceInitialized = false
+
+  // Track debate completion promises
+  const debateCompletionPromises = new Map<string, { resolve: () => void; reject: (err: Error) => void }>()
+
+  // Track if debate subscription is initialized
+  let debateSubscriptionInitialized = false
+
+  // Initialize debate subscription (lazy initialization)
+  function initializeDebateSubscription(): void {
+    if (debateSubscriptionInitialized) return
+
+    // Subscribe to debate completion events
+    Debate.subscribeToDebate("*", (event) => {
+      if (event.type === "concluded") {
+        const { debateId } = event.data as { debateId: string }
+        const promise = debateCompletionPromises.get(debateId)
+        if (promise) {
+          promise.resolve()
+          debateCompletionPromises.delete(debateId)
+        }
+      }
+    })
+
+    debateSubscriptionInitialized = true
+  }
 
   // Initialize persistence - load existing sessions
   async function initializePersistence(): Promise<void> {
@@ -61,10 +87,64 @@ export namespace Orchestrator {
   async function saveSessions(): Promise<void> {
     try {
       const data = JSON.stringify(Array.from(sessions.values()))
-      await SharedFilesystem.write(PERSISTENCE_KEY, data, { overwrite: true })
+      await SharedFilesystem.write(PERSISTENCE_KEY, data, {
+        agentSessionID: "system",
+        overwrite: true,
+      })
     } catch (err) {
       log.warn("failed to save sessions", { error: (err as Error).message })
     }
+  }
+
+  // Archive completed session to separate storage
+  async function archiveSession(sessionId: string): Promise<void> {
+    const session = sessions.get(sessionId)
+    if (!session) return
+
+    try {
+      const archiveKey = `orchestrator:archive:${sessionId}`
+      const archived = {
+        ...session,
+        archivedAt: Date.now(),
+      }
+      await SharedFilesystem.write(archiveKey, JSON.stringify(archived), {
+        agentSessionID: "system",
+        overwrite: true,
+      })
+      log.debug("session archived", { sessionId })
+    } catch (err) {
+      log.warn("failed to archive session", { sessionId, error: (err as Error).message })
+    }
+  }
+
+  // Wait for a debate to complete
+  export function waitForDebate(debateId: string, timeout: number = 300000): Promise<void> {
+    // Initialize debate subscription on first use
+    initializeDebateSubscription()
+
+    return new Promise((resolve, reject) => {
+      // Check if debate already concluded
+      const debate = Debate.getDebate(debateId)
+      if (debate) {
+        debate.then(d => {
+          if (d?.status === "concluded" || d?.status === "cancelled") {
+            resolve()
+            return
+          }
+
+          // Set up completion tracking
+          debateCompletionPromises.set(debateId, { resolve, reject })
+
+          // Set timeout
+          setTimeout(() => {
+            debateCompletionPromises.delete(debateId)
+            reject(new Error(`Timeout waiting for debate ${debateId}`))
+          }, timeout)
+        })
+      } else {
+        reject(new Error(`Debate ${debateId} not found`))
+      }
+    })
   }
 
   // Orchestrator description (agent definition in agent.ts)
@@ -119,6 +199,110 @@ export namespace Orchestrator {
   export async function getSession(sessionId: string): Promise<CollaborationSession | undefined> {
     await initializePersistence()
     return sessions.get(sessionId)
+  }
+
+  // Complete a collaboration session
+  export async function completeSession(
+    sessionId: string,
+    orchestratorAgent: string
+  ): Promise<{ success: boolean; error?: string }> {
+    const session = sessions.get(sessionId)
+    if (!session) {
+      return { success: false, error: "Session not found" }
+    }
+
+    if (session.orchestrator !== orchestratorAgent) {
+      return { success: false, error: "Only the orchestrator can complete the session" }
+    }
+
+    session.status = "completed"
+    session.updatedAt = Date.now()
+    sessions.set(sessionId, session)
+
+    await saveSessions()
+    await archiveSession(sessionId)
+
+    log.info("collaboration session completed", { sessionId })
+
+    await broadcast(
+      sessionId,
+      orchestratorAgent,
+      `Collaboration session "${session.title}" has been completed`,
+      "info"
+    )
+
+    return { success: true }
+  }
+
+  // Cancel a collaboration session
+  export async function cancelSession(
+    sessionId: string,
+    orchestratorAgent: string,
+    reason?: string
+  ): Promise<{ success: boolean; error?: string }> {
+    const session = sessions.get(sessionId)
+    if (!session) {
+      return { success: false, error: "Session not found" }
+    }
+
+    if (session.orchestrator !== orchestratorAgent) {
+      return { success: false, error: "Only the orchestrator can cancel the session" }
+    }
+
+    session.status = "cancelled"
+    session.updatedAt = Date.now()
+    sessions.set(sessionId, session)
+
+    await saveSessions()
+    await archiveSession(sessionId)
+
+    log.info("collaboration session cancelled", { sessionId, reason })
+
+    await broadcast(
+      sessionId,
+      orchestratorAgent,
+      `Collaboration session "${session.title}" has been cancelled${reason ? `: ${reason}` : ""}`,
+      "warn"
+    )
+
+    return { success: true }
+  }
+
+  // List all active sessions
+  export async function listSessions(options?: {
+    status?: CollaborationSession["status"][]
+    orchestrator?: string
+  }): Promise<CollaborationSession[]> {
+    await initializePersistence()
+
+    let result = Array.from(sessions.values())
+
+    if (options?.status) {
+      result = result.filter((s) => options.status!.includes(s.status))
+    }
+
+    if (options?.orchestrator) {
+      result = result.filter((s) => s.orchestrator === options.orchestrator)
+    }
+
+    // Sort by most recently updated
+    result.sort((a, b) => b.updatedAt - a.updatedAt)
+
+    return result
+  }
+
+  // Get archived session
+  export async function getArchivedSession(sessionId: string): Promise<CollaborationSession & { archivedAt: number } | undefined> {
+    try {
+      const archiveKey = `orchestrator:archive:${sessionId}`
+      const data = await SharedFilesystem.read(archiveKey)
+      if (data) {
+        return JSON.parse(data)
+      }
+    } catch (err) {
+      log.debug("archived session not found", { sessionId })
+    }
+    return undefined
   }
 
   // MapReduce operations
@@ -283,8 +467,13 @@ export namespace Orchestrator {
 
     await Debate.start(debate.id, orchestrator)
 
-    // Wait for debate to complete (this would be async in real implementation)
-    // For now, we continue and let agents handle via messages
+    // Wait for debate to complete before proceeding
+    try {
+      await waitForDebate(debate.id, 300000) // 5 minute timeout
+      log.info("debate completed, proceeding with implementation", { debateId: debate.id })
+    } catch (err) {
+      log.warn("debate did not complete in time, proceeding anyway", { debateId: debate.id, error: String(err) })
+    }
 
     // Step 2: Create map-reduce job to implement across files
     const job = await createMapReduceJob(sessionId, orchestrator, {

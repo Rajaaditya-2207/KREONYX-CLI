@@ -443,3 +443,6 @@ export namespace Agent {
 
 // Re-export collaboration integration for convenience
 export { CollaborationIntegration } from "./collaboration-integration"
+
+// Export agent types
+export { AgentTypes } from "./types"

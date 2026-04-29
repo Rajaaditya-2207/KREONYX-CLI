@@ -1,11 +1,9 @@
 <p align="center">
-  <a href="https://opencode.ai">
-    <picture>
-      <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
-      <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="Logo do KREONYX CLI">
-    </picture>
-  </a>
+  <picture>
+      <source srcset="packages/console/app/src/asset/lander/kreonyx-logo-dark.svg" media="(prefers-color-scheme: dark)">
+      <source srcset="packages/console/app/src/asset/lander/kreonyx-logo-light.svg" media="(prefers-color-scheme: light)">
+      <img src="packages/console/app/src/asset/lander/kreonyx-logo-light.svg" alt="Logo do KREONYX CLI">
+  </picture>
 </p>
 <p align="center">O agente de programação com IA de código aberto.</p>
 <p align="center">

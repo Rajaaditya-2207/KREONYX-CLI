@@ -1,17 +1,15 @@
 <p align="center">
-  <a href="https://opencode.ai">
-    <picture>
-      <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
-      <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="KREONYX CLI logo">
-    </picture>
-  </a>
+  <picture>
+      <source srcset="packages/console/app/src/asset/lander/kreonyx-logo-dark.svg" media="(prefers-color-scheme: dark)">
+      <source srcset="packages/console/app/src/asset/lander/kreonyx-logo-light.svg" media="(prefers-color-scheme: light)">
+      <img src="packages/console/app/src/asset/lander/kreonyx-logo-light.svg" alt="KREONYX CLI logo">
+  </picture>
 </p>
 <p align="center">The KREONYX CLI — AI-powered coding agent.</p>
 <p align="center">
   <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/kreonyx"><img alt="npm" src="https://img.shields.io/npm/v/kreonyx?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/kreonyx/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/kreonyx/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/Rajaaditya-2207/kreonyx/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/Rajaaditya-2207/kreonyx/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -54,7 +52,7 @@ brew install kreonyx              # macOS and Linux (official brew formula, upda
 sudo pacman -S kreonyx            # Arch Linux (Stable)
 paru -S kreonyx-bin               # Arch Linux (Latest from AUR)
 mise use -g kreonyx               # Any OS
-nix run nixpkgs#kreonyx           # or github:anomalyco/kreonyx for latest dev branch
+nix run nixpkgs#kreonyx           # or github:Rajaaditya-2207/kreonyx for latest dev branch
 ```
 
 > [!TIP]
@@ -62,14 +60,14 @@ nix run nixpkgs#kreonyx           # or github:anomalyco/kreonyx for latest dev b
 
 ### Desktop App (BETA)
 
-KREONYX CLI is also available as a desktop application. Download directly from the [releases page](https://github.com/anomalyco/kreonyx/releases) or [opencode.ai/download](https://opencode.ai/download).
+KREONYX CLI is also available as a desktop application. Download directly from the [releases page](https://github.com/Rajaaditya-2207/kreonyx/releases) or [opencode.ai/download](https://opencode.ai/download).
 
-| Platform              | Download                              |
-| --------------------- | ------------------------------------- |
+| Platform              | Download                             |
+| --------------------- | ------------------------------------ |
 | macOS (Apple Silicon) | `kreonyx-desktop-darwin-aarch64.dmg` |
 | macOS (Intel)         | `kreonyx-desktop-darwin-x64.dmg`     |
 | Windows               | `kreonyx-desktop-windows-x64.exe`    |
-| Linux                 | `.deb`, `.rpm`, or AppImage           |
+| Linux                 | `.deb`, `.rpm`, or AppImage          |
 
 ```bash
 # macOS (Homebrew)
@@ -118,6 +116,7 @@ Learn more about [agents](https://opencode.ai/docs/agents).
 KREONYX CLI supports multi-agent collaboration through the orchestrator agent, enabling teams of specialized agents to work together on complex tasks.
 
 **Features:**
+
 - **Collaboration Sessions** - Create sessions with multiple participating agents
 - **Debates** - Structured multi-round discussions on implementation approaches
 - **Voting** - Multiple strategies: majority, unanimous, weighted, and ranked
@@ -126,6 +125,7 @@ KREONYX CLI supports multi-agent collaboration through the orchestrator agent, e
 - **Shared Workspace** - Common memory and filesystem for coordination
 
 **CLI Commands:**
+
 ```bash
 kreonyx orchestrator:create-session    # Create new collaboration session
 kreonyx orchestrator:status            # View session status
@@ -136,6 +136,7 @@ kreonyx orchestrator:map-reduce        # Create distributed task
 ```
 
 **Example Workflow:**
+
 ```typescript
 // 1. Create session
 const session = await Orchestrator.createSession(orchestratorAgent, {

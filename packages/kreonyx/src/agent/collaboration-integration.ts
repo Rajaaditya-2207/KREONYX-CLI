@@ -4,6 +4,7 @@ import { MapReduce } from "@/collaboration/mapreduce"
 import { ReviewCycle } from "@/collaboration/review"
 import { Debate } from "@/collaboration/debate"
 import { Orchestrator } from "./orchestrator"
+import { AgentTypes } from "./types"
 import { Log } from "@/util/log"
 import { Bus } from "@/bus"
 
@@ -13,7 +14,8 @@ export namespace CollaborationIntegration {
   // Track active agent participation in collaboration
   const activeAgents = new Map<string, {
     collaborationId: string
-    role: "implementer" | "integrator" | "reviewer" | "debater" | "general"
+    role: AgentTypes.CollaborationRole
+    participant: AgentTypes.Participant
     subscriptions: (() => void)[]
   }>()
 
@@ -24,7 +26,7 @@ export namespace CollaborationIntegration {
   export async function initializeAgent(
     agentSessionId: string,
     collaborationId: string,
-    role: "implementer" | "integrator" | "reviewer" | "debater" | "general" = "general"
+    role: AgentTypes.CollaborationRole = "general"
   ): Promise<void> {
     log.info("initializing agent for collaboration", { agentSessionId, collaborationId, role })
 
@@ -40,9 +42,13 @@ export namespace CollaborationIntegration {
       })
     )
 
+    // Create participant record
+    const participant = AgentTypes.createParticipant(agentSessionId, role)
+
     activeAgents.set(agentSessionId, {
       collaborationId,
       role,
+      participant,
       subscriptions,
     })
 
@@ -53,7 +59,7 @@ export namespace CollaborationIntegration {
         agentSessionId,
         collaborationId,
         {
-          message: `Agent ${agentSessionId} ready for ${role} duties`,
+          message: `Agent ${agentSessionId} ready for ${AgentTypes.getRoleConfig(role).displayName} duties`,
           level: "info",
         },
         { priority: "normal" }
@@ -385,14 +391,54 @@ export namespace CollaborationIntegration {
    */
   export function getAgentInfo(agentSessionId: string): {
     collaborationId: string
-    role: string
+    role: AgentTypes.CollaborationRole
+    participant: AgentTypes.Participant
   } | undefined {
     const agentInfo = activeAgents.get(agentSessionId)
     if (!agentInfo) return undefined
     return {
       collaborationId: agentInfo.collaborationId,
       role: agentInfo.role,
+      participant: agentInfo.participant,
     }
+  }
+
+  /**
+   * Check if agent can perform a specific action
+   */
+  export function canPerformAction(
+    agentSessionId: string,
+    action: keyof AgentTypes.RoleCapabilities
+  ): { allowed: boolean; reason?: string } {
+    const agentInfo = activeAgents.get(agentSessionId)
+    if (!agentInfo) {
+      return { allowed: false, reason: "Agent not participating in collaboration" }
+    }
+
+    return AgentTypes.canPerformAction(agentInfo.participant, action)
+  }
+
+  /**
+   * Update agent status
+   */
+  export function updateAgentStatus(
+    agentSessionId: string,
+    status: AgentTypes.Participant["status"],
+    currentTask?: string
+  ): boolean {
+    const agentInfo = activeAgents.get(agentSessionId)
+    if (!agentInfo) return false
+
+    agentInfo.participant.status = status
+    if (currentTask) {
+      agentInfo.participant.currentTask = currentTask
+    }
+    if (status === "active") {
+      agentInfo.participant.completedTasks++
+      agentInfo.participant.currentTask = undefined
+    }
+
+    return true
   }
 
   /**
